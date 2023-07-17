@@ -1,0 +1,17 @@
+<mat-card class="mb-2 mt-2">
+  <mat-card-content
+  [ngClass]="{'bg-[#efe450]': notification.status == 'pending',
+              'bg-[#EEE5E5]': notification.status == 'denied',
+              'bg-[#adf7a4]': notification.status == 'accepted',
+              }"
+ >
+  <div class="">
+    <p class="text-xl">{{notification.text}}</p>
+    <p class="text-sm">Sender: {{notification.mittente}}</p>
+    <div *ngIf="notification.status == 'pending'" class="flex justify-end w-100">
+      <button mat-flat-button color="primary" (click)="patch('accepted')">Accept</button>
+      <button mat-flat-button color="warn" (click)="patch('denied')"class="ml-3">Decline</button>
+    </div>
+  </div>
+</mat-card-content>
+</mat-card>

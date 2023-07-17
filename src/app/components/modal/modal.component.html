@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Send a notification</h1>
+<div mat-dialog-content >
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Receiver </mat-label>
+    <mat-select #receiver>
+      <mat-option *ngFor="let user of users" [value]="user" >
+        {{user}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" class="w-full">
+    <mat-label>Text to send</mat-label>
+    <textarea matInput #text></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="justify-between pr-28 pl-28">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="sendData(receiver.value, text.value)">Send</button>
+</div>
